@@ -29,7 +29,7 @@
                 let d = new Date();
                 d.setDate(d.getDate() + parseInt(check));
                 // full date
-                document.getElementById("fulldate").innerHTML = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear() 
+                document.getElementById("fulldate").innerHTML = d.getDate() + "-" + parseInt(d.getMonth() + 1) + "-" + d.getFullYear() 
                 // check hari
                 checkday(parseInt(d.getDay()))
                 // total yg dicari
