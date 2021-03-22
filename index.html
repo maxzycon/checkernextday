@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nextDay Checker</title>
+</head>
+<body style="overflow-y: hidden;">
+    <section style="background-color: #0984e3;height:50vh;position:relative;width:100%;">
+        <div style="position: absolute;right:0;bottom:-10px;left:0;display: flex;justify-content:center">
+            <input id="forminput" style="width: 15%;display:block;padding: 12px .75rem;border-radius:.25rem;border:1px solid #cccc" placeholder="Masukan Hari" type="number"/>    
+            <button id="tombolcari" type="button" style="margin-left: 10px;background-color:antiquewhite;border:none;border-radius: 5px;">Cari</button>        
+        </div>
+    </section>
+    <section style="text-align: center;padding:10vh">
+        <p id="demo"></p>
+        <p><span id="total">1</span> hari setelah ini :</p>
+        <h1 id="hari">SENIN</h1>
+        <p  id="fulldate">22-maret-2021</p>
+    </section>
+
+    <script>
+        document.getElementById("tombolcari").addEventListener("click",() =>{
+            let check = document.getElementById("forminput").value
+            if(check == "" || check == null){
+                return alert("field harus diisi")
+            }else{
+                let d = new Date();
+                d.setDate(d.getDate() + parseInt(check));
+                // full date
+                document.getElementById("fulldate").innerHTML = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear() 
+                // check hari
+                checkday(parseInt(d.getDay()))
+                // total yg dicari
+                document.getElementById("total").innerHTML = check
+            }
+        })
+
+        function checkday(tgl){
+            let hari;
+            if(tgl == 1){
+                hari = "Senin"
+            }else if(tgl == 2){
+                hari = "Selasa"
+            }else if(tgl == 3){
+                hari = "Rabu"
+            }else if(tgl === 4){
+                hari = "Kamis"
+            }else if(tgl === 5){
+                hari = "Jumat"
+            }else if(tgl === 6){
+                hari = "Sabtu"
+            }else{
+                hari = "Minggu"
+            }
+            document.getElementById("hari").innerHTML = hari
+        }
+
+    </script>
+</body>
+</html>
